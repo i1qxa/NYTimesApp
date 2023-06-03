@@ -8,15 +8,15 @@ import java.util.Date
 @Entity
 data class ReviewItemDB(
     @PrimaryKey(autoGenerate = true)
-    val id: Float,
+    val id: Long,
     val displayTitle: String,
     val mpaaRating: String,
     val criticsPick: Int,
     val byline: String,
     val headline: String,
     val summaryShort: String,
-    val publicationDate: Date,
-    val opening_date: Date,
+    val publicationDate: String,
+    val opening_date: String,
     val dateUpdated: String,
     val link: String,
     val imgSrcLocal: String,

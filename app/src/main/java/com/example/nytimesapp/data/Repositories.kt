@@ -3,7 +3,6 @@ package com.example.nytimesapp.data
 import android.content.Context
 import androidx.room.Room
 import com.example.nytimesapp.data.local.AppDatabase
-import com.example.nytimesapp.data.local.CriticsRepositoryImpl
 import com.example.nytimesapp.data.local.critics.CriticsDao
 import com.example.nytimesapp.data.local.critics.MapperCriticsDB
 import com.example.nytimesapp.data.local.reviews.ReviewsDao

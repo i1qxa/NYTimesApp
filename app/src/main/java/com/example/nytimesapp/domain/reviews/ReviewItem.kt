@@ -1,7 +1,7 @@
 package com.example.nytimesapp.domain.reviews
 
 data class ReviewItem(
-    val id:Float,
+    val id:Long,
     val mpaaRating:String?,
     val criticPick:Int?,
     val byline:String?,
@@ -10,6 +10,6 @@ data class ReviewItem(
     val publicationDate:String?,
     val openingDate:String?,
     val dateUpdated:String?,
-    val reviewItemLinkId: Float?,
-    val reviewItemImgId:Float?,
+    val reviewItemLinkId: Long?,
+    val reviewItemImgId:Long?,
 )

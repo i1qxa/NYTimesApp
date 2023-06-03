@@ -1,7 +1,7 @@
 package com.example.nytimesapp.domain.reviews
 
 data class ReviewItemImg(
-    val id:Float,
+    val id:Long,
     val type:String,
     val srcRemote:String,
     val srcLocal:String,

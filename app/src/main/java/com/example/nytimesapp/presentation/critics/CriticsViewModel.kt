@@ -1,11 +1,18 @@
 package com.example.nytimesapp.presentation.critics
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.nytimesapp.data.Repositories
+import kotlinx.coroutines.launch
 
 class CriticsViewModel():ViewModel() {
-    val crticsRepository = Repositories.criticsRepositoryImpl
-    fun asdsd(){
-        TODO("Need to create viewModel")
+
+    private val criticsRepository = Repositories.criticsRepositoryImpl
+
+    suspend fun getCriticsList(){
+        viewModelScope.launch {
+            criticsRepository.updateCriticsList()
+        }
     }
+
 }

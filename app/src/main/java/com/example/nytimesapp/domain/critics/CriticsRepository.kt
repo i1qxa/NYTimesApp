@@ -6,6 +6,6 @@ interface CriticsRepository {
 
     suspend fun updateCriticsList()
 
-    suspend fun getCriticFullInfo():CriticItem
+     suspend fun getCriticFullInfo():CriticItem
 
 }

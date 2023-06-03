@@ -5,7 +5,7 @@ import com.example.nytimesapp.domain.critics.CriticItem
 class MapperCriticsDB {
 
     fun mapDBtoCriticsItem(dbItem: CriticItemDB) = CriticItem(
-        id = 0F,
+        id = 0,
         displayName = dbItem.displayName,
         sortName = dbItem.sortName,
         status = dbItem.status,

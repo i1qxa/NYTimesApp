@@ -16,7 +16,8 @@ import retrofit2.http.Query
 interface RetrofitService {
 
     @GET("critics/all.json?")
-    suspend fun getAllCritics(@Query("app_key") appKey:String): Response<CriticsResponse>
+    suspend fun getAllCritics(@Query("api-key") appKey:String): Response<CriticsResponse>
+//    suspend fun getAllCritics(): Response<CriticsResponse>
 
     @GET("reviews/search.json?")
     suspend fun getAllReviews(@Query("app_key") appKey:String):Response<ReviewsResponse>
@@ -29,6 +30,7 @@ interface RetrofitService {
         private fun createOkHttpClient(): OkHttpClient {
             return OkHttpClient.Builder()
                 .addInterceptor(createLoggingInterceptor())
+//                .addInterceptor(createAuthorizationInterceptor())
                 .build()
         }
 
@@ -36,6 +38,14 @@ interface RetrofitService {
             return HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY)
         }
+
+//        private fun createAuthorizationInterceptor(): Interceptor {
+//            return Interceptor { chain ->
+//                val newBuilder = chain.request().newBuilder()
+//                    .addHeader("app_key", appKey)
+//                return@Interceptor chain.proceed(newBuilder.build())
+//            }
+//        }
 
         const val BASE_URL = "https://api.nytimes.com/svc/movies/v2/"
         var retrofitService: RetrofitService? = null

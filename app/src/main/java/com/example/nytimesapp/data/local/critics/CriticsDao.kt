@@ -15,7 +15,7 @@ interface CriticsDao {
     @Insert
     suspend fun insertListCritics(listCritics:List<CriticItemDB>)
 
-    @Delete
+    @Query("DELETE FROM CriticItemDB")
     suspend fun clearCriticsDB()
 
     @Transaction

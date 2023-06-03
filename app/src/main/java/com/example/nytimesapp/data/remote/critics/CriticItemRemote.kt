@@ -13,5 +13,5 @@ data class CriticItemRemote(
     val bio:String,
     @SerialName("seo_name")
     val seoName:String,
-    val multimedia:MultimediaRemote,
+    val multimedia:MultimediaRemote?,
 )

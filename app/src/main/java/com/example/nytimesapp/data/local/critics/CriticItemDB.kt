@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class CriticItemDB(
     @PrimaryKey(autoGenerate = true)
-    val id:Float,
+    val id:Long,
     val displayName:String,
     val sortName:String,
     val status:String,

@@ -1,7 +1,7 @@
 package com.example.nytimesapp.domain.critics
 
 data class CriticItemShort(
-    val id:Float,
+    val id:Long,
     val name:String,
-    val img:CriticItemImg?,
+    val img:String?,
 )

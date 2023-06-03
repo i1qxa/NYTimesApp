@@ -15,7 +15,7 @@ interface ReviewsDao {
     @Insert
     suspend fun insertListReviews(listReviews:List<ReviewItemDB>)
 
-    @Delete
+    @Query("DELETE FROM ReviewItemDB")
     suspend fun clearReviewsDB()
 
     @Transaction
