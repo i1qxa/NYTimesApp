@@ -1,8 +1,10 @@
 package com.example.nytimesapp.data.local.reviews
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 
@@ -10,9 +12,9 @@ import androidx.room.Transaction
 interface ReviewsDao {
 
     @Query("SELECT * FROM ReviewItemDB")
-    suspend fun getAllReviews():List<ReviewItemDB>
+    fun getAllReviews():PagingSource<Int,ReviewItemDB>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertListReviews(listReviews:List<ReviewItemDB>)
 
     @Query("DELETE FROM ReviewItemDB")

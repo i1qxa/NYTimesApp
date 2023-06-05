@@ -10,6 +10,6 @@ data class ReviewItem(
     val publicationDate:String?,
     val openingDate:String?,
     val dateUpdated:String?,
-    val reviewItemLinkId: Long?,
-    val reviewItemImgId:Long?,
+    val reviewItemLink: String?,
+    val reviewItemImg:String?,
 )

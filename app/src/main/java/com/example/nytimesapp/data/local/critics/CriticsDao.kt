@@ -10,7 +10,7 @@ import androidx.room.Transaction
 interface CriticsDao {
 
     @Query("SELECT * FROM CriticItemDB")
-    suspend fun getListCritics():List<CriticItemDB>
+    fun getListCritics():List<CriticItemDB>
 
     @Insert
     suspend fun insertListCritics(listCritics:List<CriticItemDB>)

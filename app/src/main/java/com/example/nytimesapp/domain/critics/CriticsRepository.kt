@@ -1,8 +1,11 @@
 package com.example.nytimesapp.domain.critics
 
+import androidx.paging.PagingData
+import kotlinx.coroutines.flow.Flow
+
 interface CriticsRepository {
 
-    suspend fun getCriticsList():List<CriticItemShort>
+    fun getCriticsList():Flow<PagingData<CriticItemShort>>
 
     suspend fun updateCriticsList()
 

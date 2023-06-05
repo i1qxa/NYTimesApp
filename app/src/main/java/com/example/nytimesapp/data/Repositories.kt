@@ -21,8 +21,10 @@ object Repositories {
         Room.databaseBuilder(applicationContext, AppDatabase::class.java, "NYTimesDB").build()
     }
 
-    val criticsRepositoryImpl by lazy { CriticsRepositoryImpl(criticsDao, retrofitService,
-        mapperCritic) }
+//    val criticsRepositoryImpl by lazy { CriticsRepositoryImpl(criticsDao, retrofitService,
+//        mapperCritic) }
+
+//    val reviewsRepositoryImpl by lazy { ReviewRepositoryImpl(reviewsDao,) }
 
     //Mappers
     private val mapperCriticRemote by lazy { MapperCriticsRemote() }
