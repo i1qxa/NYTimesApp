@@ -13,13 +13,13 @@ class MapperReviewRemote {
         headline = itemRemote.headline,
         summaryShort = itemRemote.summaryShort,
         publicationDate = itemRemote.publicationDate,
-        opening_date = itemRemote.opening_date,
+        opening_date = itemRemote.opening_date?:"",
         dateUpdated = itemRemote.dateUpdated,
         link = itemRemote.link.url,
         imgSrcLocal = itemRemote.multimedia.src
     )
 
-    fun maoListReviewRemoteToListDB(listRemote:List<ReviewItemRemote>) = listRemote.map { reviewItemRemote ->
+    fun mapListReviewRemoteToListDB(listRemote:List<ReviewItemRemote>) = listRemote.map { reviewItemRemote ->
         mapReviewRemoteToDB(reviewItemRemote)
     }
 

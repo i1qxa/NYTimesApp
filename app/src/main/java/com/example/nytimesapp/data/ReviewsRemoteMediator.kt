@@ -6,8 +6,8 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import com.example.nytimesapp.data.local.reviews.ReviewItemDB
 import com.example.nytimesapp.data.local.reviews.ReviewsDao
-import com.example.nytimesapp.data.remote.RetrofitService
 import com.example.nytimesapp.data.remote.reviews.MapperReviewRemote
+import com.example.nytimesapp.data.remote.reviews.ReviewsApi
 import com.example.nytimesapp.domain.reviews.ReviewQueryParams
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -16,7 +16,7 @@ import dagger.assisted.AssistedInject
 @ExperimentalPagingApi
 class ReviewsRemoteMediator @AssistedInject constructor (
     private val reviewsDao: ReviewsDao,
-    private val reviewApi: RetrofitService,
+    private val reviewApi: ReviewsApi,
     private val mapper: MapperReviewRemote,
     @Assisted private val reviewQueryParams: ReviewQueryParams?
 ) : RemoteMediator<Int, ReviewItemDB>() {
@@ -25,7 +25,7 @@ class ReviewsRemoteMediator @AssistedInject constructor (
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, ReviewItemDB>
-    ): RemoteMediator.MediatorResult {
+    ): MediatorResult {
 
         pageIndex = getPageIndex(loadType) ?: return RemoteMediator.MediatorResult.Success(
             endOfPaginationReached = true
@@ -61,13 +61,12 @@ class ReviewsRemoteMediator @AssistedInject constructor (
     private suspend fun fetchReviews(
         offset: Int
         ): List<ReviewItemDB> {
-        return mapper.maoListReviewRemoteToListDB(
-            reviewApi.getAllReviews(
-                offset = offset,
-                dateRange = reviewQueryParams?.dateRange,
-                query = reviewQueryParams?.query
-            ).body()?.reviewsList ?: emptyList()
-        )
+        val listReviewRemote = reviewApi.getAllReviews(
+            offset = offset,
+            dateRange = reviewQueryParams?.dateRange,
+            query = reviewQueryParams?.query
+        ).body()?.reviewsList ?: emptyList()
+        return mapper.mapListReviewRemoteToListDB(listReviewRemote)
     }
 
     @AssistedFactory

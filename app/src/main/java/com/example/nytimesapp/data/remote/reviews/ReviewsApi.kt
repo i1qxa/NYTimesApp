@@ -10,6 +10,6 @@ interface ReviewsApi {
         @Query("offset") offset:Int?,
         @Query("publication-date") dateRange:String?,
         @Query("query") query:String?,
-        @Query("app_key") appKey:String = "ua0FkUM6o203AZt9iYPIrah9Wos0a4Yf",
+        @Query("api-key") appKey:String = "ua0FkUM6o203AZt9iYPIrah9Wos0a4Yf",
     ): Response<ReviewsResponse>
 }

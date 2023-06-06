@@ -1,7 +1,9 @@
 package com.example.nytimesapp.data.local.reviews
 
 import com.example.nytimesapp.domain.reviews.ReviewItem
+import javax.inject.Singleton
 
+@Singleton
 class MapperReviewDB {
 
     fun mapReviewDBToReviewItem(itemDB: ReviewItemDB) = ReviewItem(

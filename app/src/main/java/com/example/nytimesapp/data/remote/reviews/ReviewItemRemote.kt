@@ -19,7 +19,7 @@ data class ReviewItemRemote(
     @SerialName("publication_date")
     val publicationDate: String,
     @SerialName("opening_date")
-    val opening_date:String,
+    val opening_date:String? = "",
     @SerialName("date_updated")
     val dateUpdated:String,
     val link:LinkRemote,

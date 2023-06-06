@@ -6,13 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".presentation.MainActivity">
 
+<TextView
+    android:id="@+id/tvTest"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="This is ReviewFragment"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="com.example.nytimesapp.presentation.reviews.ReviewsFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTest"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

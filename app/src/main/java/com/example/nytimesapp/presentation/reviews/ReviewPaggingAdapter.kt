@@ -9,6 +9,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nytimesapp.R
+import com.example.nytimesapp.databinding.ReviewItemBinding
 import com.example.nytimesapp.domain.reviews.ReviewItem
 
 class ReviewPaggingAdapter(context: Context) : PagingDataAdapter<ReviewItem, ReviewViewHolder>(ReviewDiffItemCallback)  {
@@ -20,11 +21,12 @@ class ReviewPaggingAdapter(context: Context) : PagingDataAdapter<ReviewItem, Rev
 
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
         val item = getItem(position)
-        with(holder){
-            tvTitle.text = item?.headLine
-            tvSummary.text=item?.summaryShort
-            tvDate.text=item?.publicationDate
-        }
+        item?.let { holder.bind(it) }
+//        with(holder){
+//            tvTitle.text = item?.headLine
+//            tvSummary.text=item?.summaryShort
+//            tvDate.text=item?.publicationDate
+//        }
     }
 }
 
@@ -33,6 +35,12 @@ class ReviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tvTitle = itemView.findViewById<TextView>(R.id.tvReviewTitle)
     val tvSummary = itemView.findViewById<TextView>(R.id.tvSummaryShort)
     val tvDate = itemView.findViewById<TextView>(R.id.tvPublicationDate)
+
+    fun bind(item:ReviewItem){
+        tvTitle.text = item.headLine
+        tvSummary.text=item.summaryShort
+        tvDate.text=item.publicationDate
+    }
 
 }
 
