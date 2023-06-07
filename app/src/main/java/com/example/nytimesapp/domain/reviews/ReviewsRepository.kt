@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface ReviewsRepository {
 
-    fun getReviewsList(reviewQueryParams: ReviewQueryParams?):Flow<PagingData<ReviewItem>>
+    fun getReviewsList(query:String, pageSize:Int):Flow<PagingData<ReviewItem>>
 
 }

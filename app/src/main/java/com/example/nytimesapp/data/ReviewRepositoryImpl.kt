@@ -24,15 +24,17 @@ class ReviewRepositoryImpl @Inject constructor(
 ) : ReviewsRepository {
 
     @OptIn(ExperimentalPagingApi::class)
-    override fun getReviewsList(reviewQueryParams: ReviewQueryParams?)
+    override fun getReviewsList(query:String, pageSize:Int)
             : Flow<PagingData<ReviewItem>> {
         return Pager(config = PagingConfig(
             pageSize = PAGE_SIZE,
-            initialLoadSize = PAGE_SIZE,
+            initialLoadSize = PAGE_SIZE*3,
         ),
-            remoteMediator = remoteMediatorFactory.create(reviewQueryParams),
-            pagingSourceFactory = { reviewsDao.getAllReviews() }
-        ).flow
+            remoteMediator = remoteMediatorFactory.create(query, pageSize)
+        ){
+            reviewsDao.getAllReviews(query)
+        }
+            .flow
             .map { pagingData ->
                 pagingData.map { reviewItemDB ->
                     mapper.mapReviewDBToReviewItem(reviewItemDB)

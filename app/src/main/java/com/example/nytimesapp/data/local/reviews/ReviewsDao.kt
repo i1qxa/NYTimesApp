@@ -11,8 +11,8 @@ import androidx.room.Transaction
 @Dao
 interface ReviewsDao {
 
-    @Query("SELECT * FROM ReviewItemDB")
-    fun getAllReviews():PagingSource<Int,ReviewItemDB>
+    @Query("SELECT * FROM ReviewItemDB WHERE displayTitle LIKE :search")
+    fun getAllReviews(search:String):PagingSource<Int,ReviewItemDB>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertListReviews(listReviews:List<ReviewItemDB>)

@@ -18,7 +18,9 @@ class ReviewsRemoteMediator @AssistedInject constructor (
     private val reviewsDao: ReviewsDao,
     private val reviewApi: ReviewsApi,
     private val mapper: MapperReviewRemote,
-    @Assisted private val reviewQueryParams: ReviewQueryParams?
+    //@Assisted private val reviewQueryParams: ReviewQueryParams?
+    private val query:String,
+    private val pageSize:Int,
 ) : RemoteMediator<Int, ReviewItemDB>() {
     private var pageIndex = 0
 
@@ -71,6 +73,6 @@ class ReviewsRemoteMediator @AssistedInject constructor (
 
     @AssistedFactory
     interface Factory {
-        fun create(reviewQueryParams: ReviewQueryParams?): ReviewsRemoteMediator
+        fun create(query: String, pageSize:Int): ReviewsRemoteMediator
     }
 }
