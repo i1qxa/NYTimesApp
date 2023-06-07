@@ -22,9 +22,6 @@ class ReviewRepositoryImpl @Inject constructor(
     private val remoteMediatorFactory: ReviewsRemoteMediator.Factory,
     private val mapper: MapperReviewDB
 ) : ReviewsRepository {
-    override suspend fun updateReviews() {
-        TODO("Not yet implemented")
-    }
 
     @OptIn(ExperimentalPagingApi::class)
     override fun getReviewsList(reviewQueryParams: ReviewQueryParams?)

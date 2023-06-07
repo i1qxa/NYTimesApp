@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nytimesapp.databinding.FragmentReviewsBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -35,7 +36,7 @@ class ReviewsFragment : Fragment() {
         binding.rvReviewsList.adapter = adapter
         binding.rvReviewsList.layoutManager = LinearLayoutManager(requireContext())
         lifecycleScope.launch {
-            viewModel.reviewsFlow.collectLatest {
+            viewModel.reviewsFlow.collect() {
                 it.map {
                     var a = it
                 }
